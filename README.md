@@ -20,3 +20,11 @@ A POOL made by many investors for users to pay for Merchant's NFTs.
 Vaults made by different users and controlled by the program. A user can buy NFTs by using money in pool but he need to stake some money in his vault when purchasing NFTs. If NFTs price goes higher and user want to sell it, it need to pay some fee for investors, so program will sell NFTs and gain some fee, and send the remaining benefits back. But if the NFTs price goes down, the money stake in vault will go down, and if the money is not enough, the NFTs will be sold and the stake money will be put in the pool.
 
 ### User, Merchant, Investor
+
+## Problems
+
+### NFT
+We need to build a NFT platform that supports this program. I think it is not a good solution. We just achieve a debt function. So it is not involving Merchant, just for users and investors.
+
+### Token rewards
+We need to build a pool with many money. So we need to use our tokens.
