@@ -1,6 +1,6 @@
 # Solana_BNPL
 
-## 1.process
+##   1.process
 
 ### Buy Now Pay Later
 You can purchase high-priced NFTs by paying only a small portion of the upfront cost. The remaining amount can be borrowed. You have the option to repay the borrowed amount at a later time or sell your NFT and retain the profits.
@@ -11,7 +11,7 @@ Sell your NFT whenever you desire and retain the profit from the sale if the pri
 ### Repay to Take Full Ownership
 The amount you borrowed will accumulate interest at a variable rate on a daily basis depending on the lender's conditions. You have the flexibility to choose when to repay the borrowed amount or sell the NFT, don't forget to repay or sell the NFT to avoid losing ownership of your NFT and your down payment.
 
-## 2.architecture
+##   2.architecture
 
 ### POOL
 A POOL made by many investors for users to pay for Merchant's NFTs.
@@ -21,7 +21,7 @@ Vaults made by different users and controlled by the program. A user can buy NFT
 
 ### User, Merchant, Investor
 
-## 3.Problems
+##   3.Problems
 
 ### NFT
 We need to build a NFT platform that supports this program. I think it is not a good solution. We just achieve a debt function. So it is not involving Merchant, just for users and investors.
