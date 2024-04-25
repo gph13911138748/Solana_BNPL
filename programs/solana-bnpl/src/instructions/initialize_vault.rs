@@ -1,15 +1,14 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Mint, Token, TokenAccount};
+use anchor_spl::token::{ Mint, Token, TokenAccount};
 
 use crate::state::*;
-use crate::instructions::*;
 
 #[derive(Accounts)]
 pub struct InitializeVault<'info> { // build a pool
     #[account(
         init,
         payer = wallet,
-        space = 8 + 32 + 32 + 1 + 8,
+        space = 8 + 32 + 32,
         seeds = [
             b"vault",
         ],

@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{associated_token::AssociatedToken, token::{self, mint_to, Mint, MintTo, Token, TokenAccount}};
+use anchor_spl::{associated_token::AssociatedToken, token::{mint_to, Mint, MintTo, Token, TokenAccount}};
 
 #[derive(Accounts)]
 pub struct Airdrop<'info> {

@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{associated_token::AssociatedToken, token::{self, Mint, Token, TokenAccount}};
+use anchor_spl::{associated_token::AssociatedToken, token::{Mint, Token, TokenAccount}};
 
 
 #[derive(Accounts)]
@@ -33,6 +33,6 @@ pub struct InitializeMintAccount<'info> {
     pub rent: Sysvar<'info, Rent>,
 }
 
-pub fn initialize_mint(ctx: Context<InitializeMintAccount>) -> Result<()> {
+pub fn initialize_mint(_ctx: Context<InitializeMintAccount>) -> Result<()> {
     Ok(())
 }

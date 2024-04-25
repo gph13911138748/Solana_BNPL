@@ -28,3 +28,8 @@ We need to build a NFT platform that supports this program. I think it is not a 
 
 ### Token rewards
 We need to build a pool with many money. So we need to use our tokens.
+
+##   4.design
+
+### logic
+initlize_mint -> airdrop -> initialize_vault(pool) -> initialize_auth(investor's record) -> stake

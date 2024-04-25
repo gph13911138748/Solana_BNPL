@@ -1,5 +1,4 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Mint, Token, TokenAccount};
 
 mod state;
 mod instructions;
@@ -21,6 +20,10 @@ pub mod solana_bnpl {
     //initialize mint account for using this tokens for airdrop and rewards
     pub fn initialize_mint_account(ctx: Context<InitializeMintAccount>) -> Result<()> {
         initialize_mint(ctx)
+    }
+
+    pub fn initialize_authority(ctx: Context<InitializeAuth>) -> Result<()> {
+        initialize_auth(ctx)
     }
 
     //初始化vault,记录timestamps等信息
