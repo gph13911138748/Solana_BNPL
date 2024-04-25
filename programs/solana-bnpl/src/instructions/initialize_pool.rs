@@ -1,8 +1,10 @@
 use anchor_lang::prelude::*;
-use anchor_spl::{associated_token::AssociatedToken, token::{mint_to, Mint, MintTo, Token, TokenAccount}};
+use anchor_spl::token::{mint_to, Mint, MintTo, Token, TokenAccount};
+
+use crate::state::*;
 
 #[derive(Accounts)]
-pub struct Airdrop<'info> {
+pub struct InitializePool<'info> {
     #[account(
         seeds = [b"mint"],
         bump,
@@ -14,17 +16,25 @@ pub struct Airdrop<'info> {
     pub token_program: Program<'info,Token>,
     pub system_program: Program<'info,System>,
     #[account(
+        seeds = [
+            b"vault",
+        ],
+        bump,
+        has_one = token_account,
+        has_one = mint,
+    )]
+    pub vault: Account<'info, Vault>,
+    #[account(
         init_if_needed,
         payer = wallet,
-        associated_token::mint = mint,
-        associated_token::authority = wallet,
+        token::mint = mint,
+        token::authority = vault,
     )]
-    pub token_account: Account<'info, TokenAccount>,//this token_account will be used by investors
-    pub associated_token_program: Program<'info, AssociatedToken>,
+    pub token_account: Account<'info, TokenAccount>,
     pub rent: Sysvar<'info, Rent>
 }
 
-pub fn airdrop(ctx: Context<Airdrop>) -> Result<()> {
+pub fn initialize_pool(ctx: Context<InitializePool>) -> Result<()> {
     mint_to(
         CpiContext::new_with_signer(
             ctx.accounts.token_program.to_account_info(),
@@ -35,6 +45,6 @@ pub fn airdrop(ctx: Context<Airdrop>) -> Result<()> {
             }, 
             &[&[b"mint".as_ref(), &[ctx.bumps.mint]]],//do not use 'get'
         ), 
-        10)?;
+        100000)?;
     Ok(())
 }

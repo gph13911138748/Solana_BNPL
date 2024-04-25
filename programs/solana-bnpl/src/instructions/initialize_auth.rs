@@ -1,4 +1,5 @@
 use anchor_lang::prelude::*;
+use anchor_spl::token::{ Mint, Token, TokenAccount};
 
 use crate::state::*;
 
@@ -17,6 +18,16 @@ pub struct InitializeAuth<'info> {
     pub authority: Account<'info,Authority>, //record investors's information
     #[account(mut)]
     pub wallet: Signer<'info>,
+    #[account(
+        seeds = [
+            b"mint"
+        ],
+        bump
+    )]
+    pub mint: Account<'info,Mint>,
+    #[account(mut)]
+    pub token_account: Account<'info,TokenAccount>,//pool's token account
+    pub token_program: Program<'info,Token>,
     pub system_program: Program<'info,System>,
     pub rent: Sysvar<'info, Rent>,
     #[account(
@@ -30,5 +41,12 @@ pub struct InitializeAuth<'info> {
 }
 
 pub fn  initialize_auth(ctx: Context<InitializeAuth>) -> Result<()> {
+    let authority = &mut ctx.accounts.authority;
+
+    authority.token_account = ctx.accounts.token_account.key();
+    authority.authority = ctx.accounts.mint.key();
+    authority.amount = 0;
+    authority.stake_at = None;
+
     Ok(())
 }

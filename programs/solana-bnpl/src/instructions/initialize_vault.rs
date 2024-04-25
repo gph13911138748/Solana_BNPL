@@ -17,15 +17,24 @@ pub struct InitializeVault<'info> { // build a pool
     pub vault: Account<'info, Vault>,
     #[account(
         init,
-        payer = wallet,
+        payer = wallet,//common wallet for deploy
         token::mint = mint,
         token::authority = vault,
     )]
-    pub token_account: Account<'info, TokenAccount>,
+    pub token_account: Account<'info, TokenAccount>,//pool's account
     pub mint: Account<'info, Mint>,
     #[account(mut)]
     pub wallet: Signer<'info>,
     pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
     pub rent: Sysvar<'info, Rent>,
+}
+
+pub fn initialize_vault(ctx: Context<InitializeVault>) -> Result<()> {
+    let vault = &mut ctx.accounts.vault;
+
+    vault.token_account = ctx.accounts.token_account.key();
+    vault.mint = ctx.accounts.mint.key();
+
+    Ok(())
 }

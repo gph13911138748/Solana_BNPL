@@ -27,10 +27,12 @@ pub mod solana_bnpl {
     }
 
     //初始化vault,记录timestamps等信息
-    pub fn initialize_vault(ctx: Context<InitializeVault>) -> Result<()> {
-        ctx.accounts.vault.token_account = ctx.accounts.token_account.key();
-        ctx.accounts.vault.authority = ctx.accounts.wallet.key();
-        Ok(())
+    pub fn initialize_vault_(ctx: Context<InitializeVault>) -> Result<()> {
+        initialize_vault(ctx)
+    }
+
+    pub fn initialize_pool_(ctx: Context<InitializePool>) -> Result<()> {
+        initialize_pool(ctx)
     }
 }
 
