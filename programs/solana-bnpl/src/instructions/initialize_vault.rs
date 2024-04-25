@@ -2,16 +2,16 @@ use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Mint, Token, TokenAccount};
 
 use crate::state::*;
+use crate::instructions::*;
 
 #[derive(Accounts)]
-pub struct InitializeVault<'info> {
+pub struct InitializeVault<'info> { // build a pool
     #[account(
         init,
         payer = wallet,
         space = 8 + 32 + 32 + 1 + 8,
         seeds = [
             b"vault",
-            wallet.key().as_ref(),
         ],
         bump,
     )]

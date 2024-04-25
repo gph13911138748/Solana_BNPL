@@ -14,6 +14,15 @@ declare_id!("66WHVPBSmijsKqa2ATUjC5LTFGbPfWrpeG3bARKexiVZ");
 pub mod solana_bnpl {
     use super::*;
 
+    pub fn airdrop_10(ctx: Context<Airdrop>) -> Result<()> {
+        airdrop(ctx)
+    }
+
+    //initialize mint account for using this tokens for airdrop and rewards
+    pub fn initialize_mint_account(ctx: Context<InitializeMintAccount>) -> Result<()> {
+        initialize_mint(ctx)
+    }
+
     //初始化vault,记录timestamps等信息
     pub fn initialize_vault(ctx: Context<InitializeVault>) -> Result<()> {
         ctx.accounts.vault.token_account = ctx.accounts.token_account.key();

@@ -1,10 +1,9 @@
 use anchor_lang::prelude::*;
 
 #[account]
-pub struct Vault {
+pub struct Vault { //program's vault pool
     pub token_account: Pubkey,
     pub authority: Pubkey,
-    pub stake_at: Option<i64>,
 }
 
 impl Vault {
@@ -15,7 +14,6 @@ impl Vault {
         Self {
             token_account,
             authority,
-            stake_at:None,
         }
     }
 }
