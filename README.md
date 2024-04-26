@@ -36,3 +36,16 @@ We need to build a pool with many money. So we need to use our tokens.
 
 ### logic
 initlize_mint -> airdrop -> initialize_vault(pool) -> initialize_auth(investor's record) -> stake
+
+## experiment
+program_id : CCiZVVLRhS48AHYcym6LxFhNGV4WrH1gp7dFChZwbG1B
+mint : 8LEAvBfaSLAVPjz42oq5uLjXq9Q11Uh3igRvRyqm8EQS
+pool's token_account: DyfDontwskdrdojzrS5wXW8MSe75gG7HrvQT3BxtZSLU
+vault: 91rwLSZvNvckREDJniD1v1upV2dLpV9t8MgwJadNSoJv
+
+test investor:
+wallet: 2nm2FGvfcyYPPrP9EGYpdZbnemJAxFHR5b7BbdFLEqiN
+investor's token_account: spl-token create-account 8LEAvBfaSLAVPjz42oq5uLjXq9Q11Uh3igRvRyqm8EQS
+                       = ANvNSca2qYL883yXBv6iN8idQHDWjSmzSYYAQ84qUa3Z
+authority: GjqAdgTXiH8KRvfaoh43vU9GarJLzJVmLnA4P5NMouZ1
+

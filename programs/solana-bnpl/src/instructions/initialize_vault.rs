@@ -20,6 +20,8 @@ pub struct InitializeVault<'info> { // build a pool
         payer = wallet,//common wallet for deploy
         token::mint = mint,
         token::authority = mint,
+        seeds = [wallet.key().as_ref(),mint.key().as_ref()],//PDA账户种子创建
+        bump,
     )]
     pub token_account: Account<'info, TokenAccount>,//pool's account
     #[account(
@@ -32,7 +34,7 @@ pub struct InitializeVault<'info> { // build a pool
     pub wallet: Signer<'info>,
     pub token_program: Program<'info, Token>,
     pub system_program: Program<'info, System>,
-    pub associated_token_program: Program<'info, AssociatedToken>,
+    //pub associated_token_program: Program<'info, AssociatedToken>,
     pub rent: Sysvar<'info, Rent>,
 }
 
