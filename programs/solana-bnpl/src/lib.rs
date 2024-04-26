@@ -36,5 +36,3 @@ pub mod solana_bnpl {
     }
 }
 
-#[derive(Accounts)]
-pub struct Initialize {}
