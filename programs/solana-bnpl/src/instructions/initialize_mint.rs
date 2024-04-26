@@ -9,7 +9,7 @@ pub struct InitializeMintAccount<'info> {
         seeds = [b"mint"],
         bump,
         payer = wallet,
-        mint::decimals = 255,
+        mint::decimals = 9,
         mint::authority = mint,
     )]
     pub mint: Account<'info, Mint>,
@@ -17,16 +17,10 @@ pub struct InitializeMintAccount<'info> {
     pub wallet: Signer<'info>,
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>,
-    #[account(
-        init,
-        payer = wallet,
-        token::mint = mint,
-        token::authority = mint,
-    )]
-    pub token_account: Account<'info, TokenAccount>,//Creator's token_account
     pub rent: Sysvar<'info, Rent>,
 }
 
 pub fn initialize_mint(_ctx: Context<InitializeMintAccount>) -> Result<()> {
+    msg!("Token mint initialized");
     Ok(())
 }

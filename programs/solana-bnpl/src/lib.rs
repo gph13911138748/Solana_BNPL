@@ -22,10 +22,6 @@ pub mod solana_bnpl {
         initialize_mint(ctx)
     }
 
-    pub fn initialize_authority(ctx: Context<InitializeAuth>) -> Result<()> {
-        initialize_auth(ctx)
-    }
-
     //初始化vault,记录timestamps等信息
     pub fn initialize_vault_(ctx: Context<InitializeVault>) -> Result<()> {
         initialize_vault(ctx)
@@ -33,6 +29,14 @@ pub mod solana_bnpl {
 
     pub fn initialize_pool_(ctx: Context<InitializePool>) -> Result<()> {
         initialize_pool(ctx)
+    }
+
+    pub fn initialize_authority(ctx: Context<InitializeAuth>) -> Result<()> {
+        initialize_auth(ctx)
+    }
+
+    pub fn stake_(ctx: Context<Stake>,amount: u64) -> Result<()> {
+        stake(ctx, amount)
     }
 }
 

@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{mint_to, Mint, MintTo, Token, TokenAccount};
+use anchor_spl::{associated_token::AssociatedToken, token::{mint_to, Mint, MintTo, Token, TokenAccount}};
 
 use crate::state::*;
 
@@ -24,14 +24,10 @@ pub struct InitializePool<'info> {
         has_one = mint,
     )]
     pub vault: Account<'info, Vault>,
-    #[account(
-        init_if_needed,
-        payer = wallet,
-        token::mint = mint,
-        token::authority = vault,
-    )]
-    pub token_account: Account<'info, TokenAccount>,
-    pub rent: Sysvar<'info, Rent>
+    #[account(mut)]
+    pub token_account: Account<'info, TokenAccount>,//it is built by a common wallet, it's address is public
+    pub associated_token_program: Program<'info, AssociatedToken>,
+    pub rent: Sysvar<'info, Rent>,
 }
 
 pub fn initialize_pool(ctx: Context<InitializePool>) -> Result<()> {
@@ -46,5 +42,7 @@ pub fn initialize_pool(ctx: Context<InitializePool>) -> Result<()> {
             &[&[b"mint".as_ref(), &[ctx.bumps.mint]]],//do not use 'get'
         ), 
         100000)?;
+
+    msg!("initialize a token pool");
     Ok(())
 }

@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{ Mint, Token, TokenAccount};
+use anchor_spl::{associated_token::AssociatedToken, token::{ Mint, Token, TokenAccount}};
 
 use crate::state::*;
 
@@ -22,13 +22,17 @@ pub struct InitializeAuth<'info> {
         seeds = [
             b"mint"
         ],
-        bump
+        bump,
+        mut,
     )]
     pub mint: Account<'info,Mint>,
+    #[account(mut)]//need to offer to the public
+    pub pool_token_account: Account<'info,TokenAccount>,//pool's token account
     #[account(mut)]
-    pub token_account: Account<'info,TokenAccount>,//pool's token account
+    pub token_account: Account<'info, TokenAccount>,//investors token_account
     pub token_program: Program<'info,Token>,
     pub system_program: Program<'info,System>,
+    pub associated_token_program: Program<'info, AssociatedToken>,
     pub rent: Sysvar<'info, Rent>,
     #[account(
         seeds = [
@@ -43,8 +47,8 @@ pub struct InitializeAuth<'info> {
 pub fn  initialize_auth(ctx: Context<InitializeAuth>) -> Result<()> {
     let authority = &mut ctx.accounts.authority;
 
-    authority.token_account = ctx.accounts.token_account.key();
-    authority.authority = ctx.accounts.mint.key();
+    authority.token_account = ctx.accounts.pool_token_account.key();
+    authority.wallet = ctx.accounts.wallet.key();
     authority.amount = 0;
     authority.stake_at = None;
 

@@ -21,7 +21,7 @@ pub struct Airdrop<'info> {
     )]
     pub token_account: Account<'info, TokenAccount>,//this token_account will be used by investors
     pub associated_token_program: Program<'info, AssociatedToken>,
-    pub rent: Sysvar<'info, Rent>
+    pub rent: Sysvar<'info, Rent>,
 }
 
 pub fn airdrop(ctx: Context<Airdrop>) -> Result<()> {
@@ -36,5 +36,7 @@ pub fn airdrop(ctx: Context<Airdrop>) -> Result<()> {
             &[&[b"mint".as_ref(), &[ctx.bumps.mint]]],//do not use 'get'
         ), 
         10)?;
+    
+    msg!("airdrop 10 tokens to {}",ctx.accounts.token_account.key());
     Ok(())
 }
