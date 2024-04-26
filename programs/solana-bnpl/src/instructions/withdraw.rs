@@ -32,6 +32,7 @@ pub struct Withdraw<'info> { //assume that withdraw all the money
         bump,
         has_one = wallet,
         constraint = authority.token_account == vault.token_account,
+        mut,
     )]
     pub authority: Account<'info, Authority>,
     #[account(mut)]
@@ -52,11 +53,14 @@ impl<'info> Withdraw<'info> {
     
         let cpi_program = self.token_program.to_account_info();
 
-        CpiContext::new(cpi_program, cpi_accounts)
+        CpiContext::new(
+            cpi_program, 
+            cpi_accounts,
+        )
     }
 }
 
-pub fn withdraw(ctx: Context<Withdraw>) -> Result<()> {
+pub fn withdraw_(ctx: Context<Withdraw>) -> Result<()> {
     //calculate the reward and send
     let staked_at = ctx.accounts.authority.stake_at.unwrap();
     let minimum_stake_period = 100; //assume 100 seconds for minimum stake period 

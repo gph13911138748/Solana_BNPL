@@ -30,7 +30,7 @@ pub struct InitializePool<'info> {
     pub rent: Sysvar<'info, Rent>,
 }
 
-pub fn initialize_pool(ctx: Context<InitializePool>) -> Result<()> {
+pub fn initialize_pool_(ctx: Context<InitializePool>) -> Result<()> {
     mint_to(
         CpiContext::new_with_signer(
             ctx.accounts.token_program.to_account_info(),

@@ -13,8 +13,8 @@ declare_id!("66WHVPBSmijsKqa2ATUjC5LTFGbPfWrpeG3bARKexiVZ");
 pub mod solana_bnpl {
     use super::*;
 
-    pub fn airdrop_10(ctx: Context<Airdrop>) -> Result<()> {
-        airdrop(ctx)
+    pub fn airdrop(ctx: Context<Airdrop>) -> Result<()> {
+        airdrop_10(ctx)
     }
 
     //initialize mint account for using this tokens for airdrop and rewards
@@ -22,24 +22,24 @@ pub mod solana_bnpl {
         initialize_mint(ctx)
     }
 
-    pub fn initialize_vault_(ctx: Context<InitializeVault>) -> Result<()> {
-        initialize_vault(ctx)
+    pub fn initialize_vault(ctx: Context<InitializeVault>) -> Result<()> {
+        initialize_vault_(ctx)
     }
 
-    pub fn initialize_pool_(ctx: Context<InitializePool>) -> Result<()> {
-        initialize_pool(ctx)
+    pub fn initialize_pool(ctx: Context<InitializePool>) -> Result<()> {
+        initialize_pool_(ctx)
     }
 
-    pub fn initialize_authority(ctx: Context<InitializeAuth>) -> Result<()> {
-        initialize_auth(ctx)
+    pub fn initialize_auth(ctx: Context<InitializeAuth>) -> Result<()> {
+        initialize_auth_(ctx)
     }
 
-    pub fn stake_(ctx: Context<Stake>,amount: u64) -> Result<()> {
-        stake(ctx, amount)
+    pub fn stake(ctx: Context<Stake>,amount: u64) -> Result<()> {
+        stake_(ctx, amount)
     }
 
-    pub fn secure_withdraw(ctx: Context<Withdraw>) -> Result<()> {
-        withdraw(ctx)
+    pub fn withdraw(ctx: Context<Withdraw>) -> Result<()> {
+        withdraw_(ctx)
     }
 }
 

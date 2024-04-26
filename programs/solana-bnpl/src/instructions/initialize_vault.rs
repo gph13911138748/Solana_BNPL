@@ -18,8 +18,8 @@ pub struct InitializeVault<'info> { // build a pool
     #[account(
         init,
         payer = wallet,//common wallet for deploy
-        associated_token::mint = mint,
-        associated_token::authority = vault,
+        token::mint = mint,
+        token::authority = mint,
     )]
     pub token_account: Account<'info, TokenAccount>,//pool's account
     #[account(
@@ -36,7 +36,7 @@ pub struct InitializeVault<'info> { // build a pool
     pub rent: Sysvar<'info, Rent>,
 }
 
-pub fn initialize_vault(ctx: Context<InitializeVault>) -> Result<()> {
+pub fn initialize_vault_(ctx: Context<InitializeVault>) -> Result<()> {
     let vault = &mut ctx.accounts.vault;
 
     vault.token_account = ctx.accounts.token_account.key();

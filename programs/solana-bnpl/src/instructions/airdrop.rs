@@ -13,18 +13,19 @@ pub struct Airdrop<'info> {
     pub wallet: Signer<'info>,
     pub token_program: Program<'info,Token>,
     pub system_program: Program<'info,System>,
-    #[account(
-        init_if_needed,
-        payer = wallet,
-        associated_token::mint = mint,
-        associated_token::authority = wallet,
-    )]
+    // #[account(
+    //     init,
+    //     payer = wallet,
+    //     associated_token::mint = mint,
+    //     associated_token::authority = wallet,
+    // )]
+    #[account(mut)]
     pub token_account: Account<'info, TokenAccount>,//this token_account will be used by investors
     pub associated_token_program: Program<'info, AssociatedToken>,
     pub rent: Sysvar<'info, Rent>,
 }
 
-pub fn airdrop(ctx: Context<Airdrop>) -> Result<()> {
+pub fn airdrop_10(ctx: Context<Airdrop>) -> Result<()> {
     mint_to(
         CpiContext::new_with_signer(
             ctx.accounts.token_program.to_account_info(),

@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Token, TokenAccount};
+use anchor_spl::{associated_token::AssociatedToken, token::{self, Token, TokenAccount}};
 
 use crate::state::*;
 
@@ -24,6 +24,7 @@ pub struct Stake<'info> {
         bump,
         has_one = wallet,
         constraint = authority.token_account == vault.token_account,
+        mut,
     )]
     pub authority: Account<'info, Authority>,
     #[account(mut)]
@@ -31,10 +32,11 @@ pub struct Stake<'info> {
     #[account(mut)]
     pub token_account_pool: Account<'info, TokenAccount>, //pool's public address
     pub token_program: Program<'info,Token>,
+    pub associated_token_program: Program<'info, AssociatedToken>,
     pub system_program: Program<'info,System>,
 }
 
-pub fn stake(ctx: Context<Stake>, amount: u64) -> Result<()> {
+pub fn stake_(ctx: Context<Stake>, amount: u64) -> Result<()> {
     let cpi_ctx = CpiContext::new(
         ctx.accounts.token_program.to_account_info(),
         token::Transfer {

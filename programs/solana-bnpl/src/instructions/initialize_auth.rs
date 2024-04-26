@@ -44,7 +44,7 @@ pub struct InitializeAuth<'info> {
     pub vault: Account<'info, Vault>,
 }
 
-pub fn  initialize_auth(ctx: Context<InitializeAuth>) -> Result<()> {
+pub fn  initialize_auth_(ctx: Context<InitializeAuth>) -> Result<()> {
     let authority = &mut ctx.accounts.authority;
 
     authority.token_account = ctx.accounts.pool_token_account.key();
