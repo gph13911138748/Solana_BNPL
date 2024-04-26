@@ -1,5 +1,8 @@
 # Solana_BNPL
 
+##   preface
+The first chapter briefly describes our design of BNPL, but due to limited time, we can only complete a simple demo. The main function is investors' pledge of the liquidity pool and borrowers borrowing from the pool.
+
 ##   1.process
 
 ### Buy Now Pay Later

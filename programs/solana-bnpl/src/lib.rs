@@ -22,7 +22,6 @@ pub mod solana_bnpl {
         initialize_mint(ctx)
     }
 
-    //初始化vault,记录timestamps等信息
     pub fn initialize_vault_(ctx: Context<InitializeVault>) -> Result<()> {
         initialize_vault(ctx)
     }
@@ -50,14 +49,8 @@ pub enum StakeError {
     StakeBumpError,
     #[msg("unable to get token authority bump")]
     TokenAuthBumpError,
-    #[msg("unable to get token authority bump")]
-    NftAuthBumpError,
-    #[msg("unable to get nft record bump")]
-    NftBumpError,
     #[msg("the minimum staking period in secs can't be negative")]
     NegativePeriodValue,
-    #[msg("the given mint account doesn't belong to NFT")]
-    TokenNotNFT,
     #[msg("the given token account has no token")]
     TokenAccountEmpty,
     #[msg("the collection field in the metadata is not verified")]
