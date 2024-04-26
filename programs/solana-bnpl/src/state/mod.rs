@@ -1,5 +1,5 @@
-mod vault;
-mod authority;
-
 pub use vault::*;
 pub use authority::*;
+
+pub mod vault;
+pub mod authority;

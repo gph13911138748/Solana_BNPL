@@ -45,6 +45,8 @@ pub fn stake(ctx: Context<Stake>, amount: u64) -> Result<()> {
     );
 
     token::transfer(cpi_ctx, amount)?;
+    ctx.accounts.authority.init(amount);
+
     msg!("stake {} tokens successfully",amount);
     Ok(())
 }
