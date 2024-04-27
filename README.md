@@ -48,4 +48,5 @@ wallet: 2nm2FGvfcyYPPrP9EGYpdZbnemJAxFHR5b7BbdFLEqiN
 investor's token_account: spl-token create-account 8LEAvBfaSLAVPjz42oq5uLjXq9Q11Uh3igRvRyqm8EQS
                        = ANvNSca2qYL883yXBv6iN8idQHDWjSmzSYYAQ84qUa3Z
 authority: GjqAdgTXiH8KRvfaoh43vU9GarJLzJVmLnA4P5NMouZ1
+record: 9fm5Xobj3ofC1CBr1hayJW7j5hEfZs7RXopZK29hZk11
 
