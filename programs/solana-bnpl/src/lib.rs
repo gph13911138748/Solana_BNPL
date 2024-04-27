@@ -50,6 +50,10 @@ pub mod solana_bnpl {
     pub fn borrow(ctx: Context<Borrow>, amount: u64) -> Result<()> {
         borrow_(ctx, amount)
     }
+
+    pub fn back(ctx: Context<Back>) -> Result<()> {
+        back_(ctx)
+    }
 }
 
 #[error_code]

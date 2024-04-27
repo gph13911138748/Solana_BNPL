@@ -7,6 +7,7 @@ pub use withdraw::*;
 pub use stake::*;
 pub use initialize_record::*;
 pub use borrow::*;
+pub use back::*;
 
 pub mod initialize_vault;
 pub mod initialize_mint;
@@ -17,3 +18,4 @@ pub mod stake;
 pub mod withdraw;
 pub mod initialize_record;
 pub mod borrow;
+pub mod back;
