@@ -35,7 +35,7 @@ We need to build a pool with many money. So we need to use our tokens.
 ##   4.design
 
 ### logic
-initlize_mint -> airdrop -> initialize_vault(pool) -> initialize_auth(investor's record) -> stake
+initlize_mint -> airdrop -> initialize_vault(pool) -> initialize_auth(investor's record) -> stake -> withdraw
 
 ## experiment
 program_id : CCiZVVLRhS48AHYcym6LxFhNGV4WrH1gp7dFChZwbG1B

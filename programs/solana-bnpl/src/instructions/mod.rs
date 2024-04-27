@@ -5,6 +5,8 @@ pub use initialize_auth::*;
 pub use initialize_pool::*;
 pub use withdraw::*;
 pub use stake::*;
+pub use initialize_record::*;
+pub use borrow::*;
 
 pub mod initialize_vault;
 pub mod initialize_mint;
@@ -13,3 +15,5 @@ pub mod initialize_auth;
 pub mod initialize_pool;
 pub mod stake;
 pub mod withdraw;
+pub mod initialize_record;
+pub mod borrow;

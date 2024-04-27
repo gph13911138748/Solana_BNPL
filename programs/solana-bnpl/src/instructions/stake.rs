@@ -4,7 +4,7 @@ use anchor_spl::{associated_token::AssociatedToken, token::{self, Token, TokenAc
 use crate::state::*;
 
 #[derive(Accounts)]
-#[instruction(amount:i64)]
+#[instruction(amount:u64)]
 pub struct Stake<'info> {
     #[account(mut)]
     pub wallet: Signer<'info>,

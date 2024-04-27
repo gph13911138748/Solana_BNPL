@@ -11,6 +11,7 @@ declare_id!("66WHVPBSmijsKqa2ATUjC5LTFGbPfWrpeG3bARKexiVZ");
 
 #[program]
 pub mod solana_bnpl {
+
     use super::*;
 
     pub fn airdrop(ctx: Context<Airdrop>) -> Result<()> {
@@ -34,12 +35,20 @@ pub mod solana_bnpl {
         initialize_auth_(ctx)
     }
 
-    pub fn stake(ctx: Context<Stake>,amount: u64) -> Result<()> {
+    pub fn initialize_record(ctx: Context<InitializeRecord>) -> Result<()> {
+        initialize_record_(ctx)
+    }
+
+    pub fn stake(ctx: Context<Stake>, amount: u64) -> Result<()> {
         stake_(ctx, amount)
     }
 
     pub fn withdraw(ctx: Context<Withdraw>) -> Result<()> {
         withdraw_(ctx)
+    }
+
+    pub fn borrow(ctx: Context<Borrow>, amount: u64) -> Result<()> {
+        borrow_(ctx, amount)
     }
 }
 
